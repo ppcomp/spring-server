@@ -1,10 +1,14 @@
 package com.ppcomp.server;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.SessionFactoryBuilder;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import java.util.Arrays;
 
@@ -28,5 +32,15 @@ public class ServerApplication {
 			}
 
 		};
+	}
+
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		return new LocalSessionFactoryBean();
+	}
+
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
 	}
 }
